@@ -60,13 +60,13 @@ cd secure-lsb-stego
 ### New Version (Recommended)
 
 ```bash
-python Stego.py
+python3 Stego.py
 ```
 
 ### Older Version (Legacy)
 
 ```bash
-python OldStego.py
+python3 OldStego.py
 ```
 
 **Steps:**
