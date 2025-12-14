@@ -1,5 +1,8 @@
-```
+
 # Fast Secure Steganography Tool
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 A Python tool to securely hide text in images using **AES encryption** and randomized pixel positions. Optimized for large images with a simple **Tkinter GUI**.
 
