@@ -1,4 +1,3 @@
-
 # Fast Secure Steganography Tool
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
@@ -40,7 +39,7 @@ cd secure-lsb-stego
 1. Run the GUI:
 
 ```bash
-python steganography_tool.py
+python Stego.py
 ```
 
 2. Generate or paste a key (save it securely).  
