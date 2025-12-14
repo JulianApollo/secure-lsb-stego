@@ -29,8 +29,8 @@ pip install pillow cryptography
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/stego-tool.git
-cd stego-tool
+git clone https://github.com/wfrefdewwss/secure-lsb-stego.git
+cd secure-lsb-stego
 ```
 
 ---
@@ -80,3 +80,4 @@ graph LR
 
 You can find the license in the **LICENSE** file.
 ```
+
