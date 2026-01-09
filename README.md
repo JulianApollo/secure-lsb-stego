@@ -1,23 +1,30 @@
 # Fast Secure Steganography Tool
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+![Python](https://img.shields.io/badge/Python-3.8+-blue )
+![License](https://img.shields.io/badge/License-MIT-green )
 
 A Python tool to securely hide text in images using **strong AES encryption** and randomized pixel positions. Optimized for large images with a simple **Tkinter GUI**.
 
 ---
 
-## 🆕 Update History
+## Update History
 
 ### Latest Version (Stego.py)
 
-**Date:** Today
+**Date:** January 10, 2026
 
-**What’s New:**
+**What's New:**
 
-* ✅ Added support for **AES-256-GCM** encryption (more secure & modern)
-* 🎨 Enhanced GUI for better usability and clarity
-* ⚡ Improved overall stability and user experience
+* **Security Enhancement:** Replaced `random` library with `secrets` module and custom deterministic RNG using SHA-256 hashing
+* Added support for **AES-256-GCM** encryption (more secure & modern)
+* Enhanced GUI for better usability and clarity
+* Improved overall stability and user experience
+
+**Technical Details of Today's Update:**
+- **Removed dependency on `random` module** - now uses cryptographically secure deterministic RNG
+- **Added `DeterministicRNG` class** that uses repeated SHA-256 hashing for position generation
+- **Maintains backward compatibility** - same keys will produce same results
+- **More secure than standard `random.Random`** while preserving deterministic behavior required for decoding
 
 ### Older Version (OldStego.py)
 
@@ -29,6 +36,7 @@ A Python tool to securely hide text in images using **strong AES encryption** an
 
 ## Features
 
+* **Enhanced Security:** Cryptographically secure deterministic RNG using SHA-256
 * Encrypt text using **AES-256-GCM** (latest version)
 * Hide encrypted data in randomized pixel positions
 * Supports PNG and BMP images
@@ -43,13 +51,13 @@ A Python tool to securely hide text in images using **strong AES encryption** an
 Requires Python 3.8+ and the following libraries:
 
 ```bash
-pip install pillow cryptography
+pip install pillow cryptography pyperclip
 ```
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/wfrefdewwss/secure-lsb-stego.git
+git clone https://github.com/wfrefdewwss/secure-lsb-stego.git 
 cd secure-lsb-stego
 ```
 
@@ -82,7 +90,7 @@ python3 OldStego.py
 
 1. Text is encrypted using **AES-256-GCM** (or Fernet in older version).
 2. Encrypted data is converted to bits.
-3. A random sequence of pixel positions is generated from the key.
+3. A cryptographically secure random sequence of pixel positions is generated from the key using SHA-256 hashing.
 4. Bits are embedded in the least significant bits of RGB channels.
 5. To decode, the same key regenerates the pixel positions to read and decrypt the message.
 
@@ -90,11 +98,21 @@ python3 OldStego.py
 graph LR
     A[Text] --> B[Encrypt with AES]
     B --> C[Convert to bits]
-    C --> D[Random pixel positions]
+    C --> D[Secure random pixel positions]
     D --> E[Embed in RGB LSBs]
     E --> F[Stego Image]
     F --> G[Decode with same key]
 ```
+
+---
+
+## Security Features
+
+* **Deterministic RNG:** Uses SHA-256 hashing instead of Python's `random` module for better security
+* **Hardware RNG Support:** Automatically detects and uses available hardware random number generators
+* **Graceful Fallback:** Falls back to software entropy if hardware RNG fails
+* **Cross-platform:** Same API works on all platforms
+* **No Version Signatures:** Encoded data contains no version markers for stealth
 
 ---
 
